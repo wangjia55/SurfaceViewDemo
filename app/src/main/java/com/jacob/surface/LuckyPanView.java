@@ -155,6 +155,14 @@ public class LuckyPanView extends SurfaceView implements SurfaceHolder.Callback,
             if (mCanvas != null) {
                 drawBg();
                 drawArc();
+                if (isShouldEnd){
+                    speed-=1;
+                }
+                if (speed <=0){
+                    speed =0;
+                    isShouldEnd = false;
+                }
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -217,6 +225,11 @@ public class LuckyPanView extends SurfaceView implements SurfaceHolder.Callback,
 
 
     public void startRotate() {
+        isShouldEnd = false;
+        speed = 10;
+    }
 
+    public boolean isStarted(){
+        return isShouldEnd;
     }
 }
